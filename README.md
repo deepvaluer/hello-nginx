@@ -47,3 +47,13 @@ docker compose up -d
 ```bash
 docker compose exec nginx /usr/sbin/logrotate  -f /etc/logrotate.conf
 ```
+
+### Appendix 1. 인증서 crt 파일이 여러개인 경우
+
+crt 파일이 여러개인 경우 파일 하나로 합치는 과정이 필요 함
+
+```bash
+cat example.com.crt > cert.pem
+cat sub.ca.crt >> cert.pem
+cat ca.crt >> cert.pem
+```
