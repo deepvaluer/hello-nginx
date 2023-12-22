@@ -1,0 +1,27 @@
+version: "2.4"
+
+services:
+  nginx:
+    container_name: nginx
+    image: deepv/nginx
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 100
+    tmpfs:
+      - /var/run
+      - /var/cache
+    volumes:
+      - ./nginx/logrotate.conf:/etc/logrotate.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:rw
+      - ./nginx/templates:/etc/nginx/templates:ro
+      - ./nginx/dhparams4096.pem:/dhparams4096.pem
+      - ./ssl/cert.pem:/cert.pem:ro
+      - ./ssl/key.pem:/key.pem:ro
+      - ./log:/var/log/nginx
+    environment:
+      - TZ=Asia/Seoul
+      - BACKEND_SERVER=x.x.x.x:8080
+    ports:
+      - 443:443
+      - 80:80
