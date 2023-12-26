@@ -1,6 +1,10 @@
 # Nginx Reverse Proxy 설정
 
-### 1. nginx-extra와 logrotate를 사용하는 nginx docker image 빌드
+# Cron이 실행되는거 같지 않아 수정 필요.
+
+### 1. nginx-extra와 logrotate를 사용하는 nginx docker image 빌드  
+nginx는 debian 계열 이미지를 이용해야한다. (alpine 이미지 사용 불가)
+> nginx-extra가 debaian에서 사용 가능한 package다.  
 
 ```bash
 docker build -t deepv/nginx .
@@ -57,3 +61,5 @@ cat example.com.crt > cert.pem
 cat sub.ca.crt >> cert.pem
 cat ca.crt >> cert.pem
 ```
+
+
