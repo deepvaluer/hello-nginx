@@ -1,7 +1,5 @@
 # Nginx Reverse Proxy 설정
 
-# Cron이 실행되는거 같지 않아 수정 필요.
-
 ### 1. nginx-extra와 logrotate를 사용하는 nginx docker image 빌드  
 nginx는 debian 계열 이미지를 이용해야한다. (alpine 이미지 사용 불가)
 > nginx-extra가 debaian에서 사용 가능한 package다.  
@@ -44,12 +42,14 @@ volumes:
 
 ```bash
 docker compose up -d
-docker compose exec nginx service cron start
 ```
 
 ### 4. logrotate 실행 확인
 
 ```bash
+# cron 실행 확인
+docker compose exec nginx service cron status
+# logrotate 강제 실행
 docker compose exec nginx /usr/sbin/logrotate  -f /etc/logrotate.conf
 ```
 
