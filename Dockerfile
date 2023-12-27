@@ -8,5 +8,3 @@ RUN apt-get clean
 RUN apt-get update && \
     apt-get install -y nginx-extras cron logrotate && \
     rm -rf /var/lib/apt/lists/*
-
-CMD service cron start && nginx -g 'daemon off;'
