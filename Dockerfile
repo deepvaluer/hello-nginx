@@ -6,5 +6,7 @@ RUN apt-get clean
 
 # 필요한 패키지를 설치
 RUN apt-get update && \
-    apt-get install -y nginx-extras logrotate && \
+    apt-get install -y nginx-extras cron logrotate && \
     rm -rf /var/lib/apt/lists/*
+
+CMD service cron start && nginx -g 'daemon off;'
