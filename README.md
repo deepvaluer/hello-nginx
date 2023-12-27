@@ -40,10 +40,11 @@ volumes:
   - ./log:/var/log/nginx
 ```
 
-### 3. docker 실행
+### 3. docker 및 cron 실행
 
 ```bash
 docker compose up -d
+docker compose exec nginx service cron start
 ```
 
 ### 4. logrotate 실행 확인
