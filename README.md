@@ -49,6 +49,8 @@ docker compose up -d
 ```bash
 # cron 실행 확인
 docker compose exec nginx service cron status
+# crontab 등록 내역 확인
+docker compose exec nginx crontab -l
 # logrotate 강제 실행
 docker compose exec nginx /usr/sbin/logrotate  -f /etc/logrotate.conf
 ```
