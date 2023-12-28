@@ -3,4 +3,6 @@
 
 service cron start
 
+{ echo "59 23 * * * /usr/sbin/logrotate -f /etc/logrotate.conf"; } | crontab
+
 sh /docker-entrypoint.sh nginx -g 'daemon off;'
